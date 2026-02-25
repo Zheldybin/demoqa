@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -29,11 +32,22 @@ public class StudentRegistrationForm {
         $("#hobbies-checkbox-1").click();
         $("#hobbies-checkbox-3").click();
         //загрузить фото
+        File file = new File("src/test/resources/cat.jpg");
+        $("#uploadPicture").uploadFile(file);
         //заполнить поле current address
+        $("#currentAddress").setValue("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         //выбрать штаит
+        $("#react-select-3-input").scrollIntoView(true);
+        $("#react-select-3-input").click();
+        $("#react-select-3-option-0").shouldBe(visible).click();
         //выбрать город
+        $("#react-select-4-input").click();
+        $("#react-select-4-option-0").shouldBe(visible).click();
         //нажать кнопку отправить
+        $("#submit").click();
         // сделать проверку
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+
         sleep(5000);
     }
 }
