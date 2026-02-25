@@ -1,13 +1,15 @@
+package tests;
+
 import org.junit.jupiter.api.Test;
+import pages.BestPage;
 
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
-public class StudentRegistrationForm {
+public class StudentRegistrationFormTest extends BestPage {
     @Test
     void RegistrationForm() {
 
@@ -17,16 +19,15 @@ public class StudentRegistrationForm {
         String userNumber = "4999886645";
         String currentAddress = "Leprosorium";
 
-        open("https://demoqa.com/automation-practice-form");
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#userEmail").setValue(userMail);
-        $("#gender-radio-1").click();
-        $("#userNumber").setValue(userNumber);
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").shouldBe(visible).selectOption("1993");
-        $(".react-datepicker__month-select").shouldBe(visible).selectOption("April");
-        $(".react-datepicker__day--005").click();
+        registrationPage().openPage()
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(userMail)
+                .setGender()
+                .setNumber(userNumber)
+                .setBirthDate("05","April", "1993");
+
+
         $("#subjectsInput").setValue("History");
         $(".subjects-auto-complete__menu").click();
         $("#hobbies-checkbox-1").click();
