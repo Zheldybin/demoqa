@@ -3,12 +3,7 @@ package pages;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 
-public class BestPage {
-    protected RegistrationPage registrationPage = new RegistrationPage();
-
-    public RegistrationPage registrationPage() {
-        return registrationPage;
-    }
+public class BasePage {
 
     @BeforeAll
     static void beforeAll() {
