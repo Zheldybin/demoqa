@@ -9,11 +9,11 @@ import static com.codeborne.selenide.Selenide.$;
 public class RegistrationResultsModal {
     private SelenideElement exampleModalTitle = $("#example-modal-sizes-title-lg");
 
-    public void verifayModalAppers(){
+    public void verifyModalAppears(){
         exampleModalTitle.shouldHave(text("Thanks for submitting the form"));
     }
 
-    public void verifayResult(String key, String value) {
+    public void verifyResult(String key, String value) {
         $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
     }
 

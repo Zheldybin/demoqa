@@ -14,13 +14,13 @@ public class StudentRegistrationFormTest extends BasePage {
         String userNumber = "4999886645";
         String currentAddress = "Leprosorium";
         String day = "05";
-        String mounth = "April";
+        String month = "April";
         String year = "1993";
         String subjects = "Hindi";
         String hobbies = "1";
-        String patchName = "src/test/resources/cat.jpg";
-        String city = "0";
-        String state = "0";
+        String filePath = "src/test/resources/cat.jpg";
+        String cityIndex = "0";
+        String stateIndex = "0";
 
 
         RegistrationPage registrationPage = new RegistrationPage();
@@ -32,19 +32,19 @@ public class StudentRegistrationFormTest extends BasePage {
                 .setEmail(userMail)
                 .setGender()
                 .setNumber(userNumber)
-                .setBirthDate(day, mounth, year)
+                .setBirthDate(day, month, year)
                 .setSubjects(subjects)
                 .checkHobbies(hobbies)
-                .uploadFile(patchName)
+                .uploadFile(filePath)
                 .setCurrentAddress(currentAddress)
-                .setState(state)
-                .setCity(city)
+                .setState(stateIndex)
+                .setCity(cityIndex)
                 .submitForm()
-                .VerifayResultsModalAppears()
-                .VerifayResults("Student Name", firstName + " " + lastName)
-                .VerifayResults("Student Email", userMail)
-                .VerifayResults("Mobile", userNumber)
-                .VerifayResults("Date of Birth", day + " " + mounth + "," + year);
+                .verifyResultsModalAppears()
+                .verifyResult("Student Name", firstName + " " + lastName)
+                .verifyResult("Student Email", userMail)
+                .verifyResult("Mobile", userNumber)
+                .verifyResult("Date of Birth", day + " " + month + "," + year);
     }
 
 }

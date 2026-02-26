@@ -11,10 +11,10 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
-    CalendarComponent calendarComponent = new CalendarComponent();
-    RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
+    private CalendarComponent calendarComponent = new CalendarComponent();
+    private RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
 
-    String url = "/automation-practice-form";
+    private static final String URL = "/automation-practice-form";
     private static final String HOBBIES_CHECKBOX_SELECTOR = "#hobbies-checkbox-";
     private static final String STATE_SELECT_OPTIONS_SELECTOR = "#react-select-3-option-";
     private static final String CITY_SELECT_OPTIONS_SELECTOR = "#react-select-4-option-";
@@ -22,9 +22,9 @@ public class RegistrationPage {
 
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
-            EmailInput = $("#userEmail"),
-            GenderRadioButton = $("#gender-radio-1"),
-            NumberInput = $("#userNumber"),
+            emailInput = $("#userEmail"),
+            genderRadioButton = $("#gender-radio-1"),
+            numberInput = $("#userNumber"),
             dateOfBirthInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
             addingSubjectMenu = $(".subjects-auto-complete__menu"),
@@ -35,7 +35,7 @@ public class RegistrationPage {
             submitBtnForm = $("#submit");
 
     public RegistrationPage openPage() {
-        open(url);
+        open(URL);
         return this;
     }
 
@@ -50,17 +50,17 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setEmail(String value) {
-        EmailInput.setValue(value);
+        emailInput.setValue(value);
         return this;
     }
 
     public RegistrationPage setGender() {
-        GenderRadioButton.click();
+        genderRadioButton.click();
         return this;
     }
 
     public RegistrationPage setNumber(String value) {
-        NumberInput.setValue(value);
+        numberInput.setValue(value);
         return this;
     }
 
@@ -70,13 +70,13 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage VerifayResultsModalAppears() {
-        registrationResultsModal.verifayModalAppers();
+    public RegistrationPage verifyResultsModalAppears() {
+        registrationResultsModal.verifyModalAppears();
         return this;
     }
 
-    public RegistrationPage VerifayResults(String key, String value) {
-        registrationResultsModal.verifayResult(key, value);
+    public RegistrationPage verifyResult(String key, String value) {
+        registrationResultsModal.verifyResult(key, value);
         return this;
     }
 
